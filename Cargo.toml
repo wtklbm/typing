@@ -1,0 +1,35 @@
+[package]
+edition = "2021"
+name = "typing"
+version = "0.0.0"
+
+[lib]
+crate-type = ["cdylib"]
+
+# https://doc.rust-lang.org/cargo/reference/profiles.html#release
+[profile.release]
+codegen-units = 1
+opt-level = "z"
+panic = "abort"
+strip = "symbols"
+lto = "fat"
+
+# https://doc.rust-lang.org/cargo/reference/profiles.html#dev
+[profile.dev]
+panic = "unwind"
+codegen-units = 512
+
+[dependencies]
+# 默认启用 `napi4` 功能，请参见 https://nodejs.org/api/n-api.html#node-api-version-matrix
+napi = { version = "2.12.2", default-features = false, features = ["napi4"] }
+napi-derive = "2.12.2"
+enigo = { version = "0.3.0", features = [
+    "xdo",
+    "libei",
+    "serde",
+    "wayland",
+    "x11rb",
+] }
+
+[build-dependencies]
+napi-build = "2.0.1"
