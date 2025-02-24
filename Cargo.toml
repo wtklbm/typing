@@ -21,12 +21,11 @@ codegen-units = 512
 
 [dependencies]
 # 默认启用 `napi4` 功能，请参见 https://nodejs.org/api/n-api.html#node-api-version-matrix
-napi = { version = "2.12.2", default-features = false, features = ["napi4"] }
+napi = { version = "2.16.16", default-features = false, features = ["napi4"] }
 napi-derive = "2.12.2"
 enigo = { version = "0.3.0", features = [
-    "xdo",
-    "libei",
-    "serde",
+    # "libei",
+    # "serde",
     "wayland",
     "x11rb",
 ] }
